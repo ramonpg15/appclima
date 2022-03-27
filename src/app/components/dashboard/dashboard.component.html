@@ -1,0 +1,30 @@
+<div class="container pt-4">
+  <div class="row">
+    <div class="col-lg-4">
+      <img src="https://cdn-icons-png.flaticon.com/512/1116/1116453.png" alt="clima" width="300" height="300">
+    </div>
+    <div class="col-lg-6">
+      <input type="text" class="form-control text-center"
+      placeholder="Ingrese ciudad" [(ngModel)]="ciudad">
+      <button class="btn btn-primary w-100 mt-4" [disabled]="ciudad===''"
+      (click)="obtenerClima()">Obtener clima</button>
+
+      <div class="text-center mt-3" *ngIf="loading">
+        <div class="spinner-border text-primary" role="status"></div>
+        <div class="spinner-border text-primary" role="status"></div>
+        <div class="spinner-border text-primary" role="status"></div>
+      </div>
+
+      <div class="card mt-3" *ngIf="query">
+        <div class="card-body">
+          <p><b>Temperatura: {{temperatura/10}} °C</b></p>
+          <p><b>Humedad: {{humedad}}</b></p>
+          <p><b>Clima: {{clima}}</b></p>
+        </div>
+      </div>
+      <div class="container alert alert-danger text-center mt-3" *ngIf="mostrarError">
+        <h1 class="badge bg-danger" >Ciudad no encontrada</h1>
+      </div>
+    </div>
+  </div>
+</div>
